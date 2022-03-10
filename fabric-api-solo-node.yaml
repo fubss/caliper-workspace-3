@@ -1,0 +1,49 @@
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+name: Fabric
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+  #command:
+  #  start: start.sh
+  #  end: end.sh
+
+info:
+  Version: 2.4.0
+  Size: 2 Orgs with 1 Peer
+  Orderer: Raft
+  Distribution: Single Host
+  StateDB: LevelDB
+  FABRIC_LOGGING_SPEC: WARNING
+  CORE_CHAINCODE_LOGGING_LEVEL: WARNING
+
+channels:
+  - channelName: mychannel
+    contracts:
+    - id: fixed-asset
+
+organizations:
+  - mspid: Org1MSP
+    identities:
+      certificates:
+      - name: 'User1'
+        clientPrivateKey:
+          path: '../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/priv_sk'
+        clientSignedCert:
+          path: '../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/User1@org1.example.com-cert.pem'
+    connectionProfile:
+      path: '../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.yaml'
+      discover: true

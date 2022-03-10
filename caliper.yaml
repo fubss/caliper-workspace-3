@@ -1,0 +1,10 @@
+caliper:
+  logging:
+    targets:
+      console:
+        options:
+          # we don't care about info level messages anymore
+          level: warn
+      file:
+        # we disable this
+        enabled: false
