@@ -1,6 +1,11 @@
 node_modules
 *.html
 *.txt
+bench_*
+report*
+*.svg
+*.folded
+perf.data
 
 # OS generated files #
 ######################
