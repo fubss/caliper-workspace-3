@@ -104,12 +104,12 @@ do
     echo "===================================="
     echo ""
     START_BENCH_TIME=$(date '+%H:%M:%S')
-    echo "Benchamrk started at ${START_BENCH_TIME}:" >& "./$DIRNAME/${BENCH}_${STATEDBNAME}_output_${START_NETWORK_TIME}.txt"
+    echo "Benchamrk started at ${START_BENCH_TIME}:" >> "./$DIRNAME/${BENCH}_${STATEDBNAME}_output_${START_NETWORK_TIME}.txt"
     set -x
     npx caliper launch manager --caliper-workspace . \
     --caliper-networkconfig ./fabric-api-solo-node.yaml \
     --caliper-benchconfig ./benchmarks/$BENCH.yaml  \
-    --caliper-flow-only-test --caliper-fabric-gateway-enabled >& "./$DIRNAME/${BENCH}_${STATEDBNAME}_output_${START_NETWORK_TIME}.txt"
+    --caliper-flow-only-test --caliper-fabric-gateway-enabled >> "./$DIRNAME/${BENCH}_${STATEDBNAME}_output_${START_NETWORK_TIME}.txt"
     { set +x; } 2>/dev/null
 
 #       3.1.3 check that "report.html" exist, if not - echo & continue loop
@@ -124,10 +124,10 @@ do
     #       3.1.5 rename "report.html" to "report_benchmarkName_SPECIFIEDdb.html"
     FINISH_BENCH_TIME=$(date '+%H%M%S')
     cp report.html "./$DIRNAME/report_${BENCH}_${STATEDBNAME}_${FINISH_BENCH_TIME}.html"
-
+    rm report.html
     #       3.1.6 stop HLF
     echo "Stopping fabric network..."
-    ./end.sh ${STATEDBNAME} >& "./$DIRNAME/${BENCH}_${STATEDBNAME}_output_${START_NETWORK_TIME}.txt"
+    ./end.sh ${STATEDBNAME} >> "./$DIRNAME/${BENCH}_${STATEDBNAME}_output_${START_NETWORK_TIME}.txt"
 
     #==============================================================================================
     #==============================================================================================
@@ -154,12 +154,12 @@ do
     echo "===================================="
     echo ""
     START_BENCH_TIME=$(date '+%H:%M:%S')
-    echo "Benchamrk started at ${START_BENCH_TIME}:" >& "./$DIRNAME/${BENCH}_${LEVELDB}_output_${START_NETWORK_TIME}.txt"
+    echo "Benchamrk started at ${START_BENCH_TIME}:" >> "./$DIRNAME/${BENCH}_${LEVELDB}_output_${START_NETWORK_TIME}.txt"
     set -x
     npx caliper launch manager --caliper-workspace . \
     --caliper-networkconfig ./fabric-api-solo-node.yaml \
     --caliper-benchconfig ./benchmarks/$BENCH.yaml  \
-    --caliper-flow-only-test --caliper-fabric-gateway-enabled >& "./$DIRNAME/${BENCH}_${LEVELDB}_output_${START_NETWORK_TIME}.txt"
+    --caliper-flow-only-test --caliper-fabric-gateway-enabled >> "./$DIRNAME/${BENCH}_${LEVELDB}_output_${START_NETWORK_TIME}.txt"
     { set +x; } 2>/dev/null
 
     #       3.2.3 check that "report.html" exist, if not - TODO: decide. stop script?
@@ -174,9 +174,9 @@ do
     #       3.2.5 rename "report.html" to "report_benchmarkName_leveldb.html"
     FINISH_BENCH_TIME=$(date '+%H%M%S')
     cp report.html "./$DIRNAME/report_${BENCH}_${LEVELDB}_${FINISH_BENCH_TIME}.html"
-
+    rm report.html
     #       3.2.6 stop HLF
     echo "Stopping fabric network..."
-    ./end.sh ${LEVELDB} >& "./$DIRNAME/${BENCH}_${LEVELDB}_output_${START_NETWORK_TIME}.txt"
+    ./end.sh ${LEVELDB} >> "./$DIRNAME/${BENCH}_${LEVELDB}_output_${START_NETWORK_TIME}.txt"
 done   
 
