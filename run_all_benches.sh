@@ -36,7 +36,7 @@
 # Code:
 # ------------------------------------------------------
 
-CALIPER_BENCHMARKS_TO_RUN="empty-contract-1of" #get-asset create-asset delete-asset mixed-range-query-pagination get-asset-batch create-asset-batch"
+CALIPER_BENCHMARKS_TO_RUN="empty-contract-1of get-asset create-asset delete-asset mixed-range-query-pagination get-asset-batch create-asset-batch"
 SupportedDBs="rocksdb boltdb (all compares to leveldb)"
 LEVELDB="leveldb"
 
@@ -81,6 +81,16 @@ fi
 
 #checks that images with fabric-leveldb and fabric-STATEDBNAME exist
 #TODO this
+#check that STATEDBNAME images exist
+if ! [[ $(docker images | grep 2.4.0-${STATEDBNAME}) ]]; then
+    echo "no fabric-${STATEDBNAME} images detected. Please assemble fabric with ${STATEDBNAME} as a state database and make sure that images named with format 2.4.0-${STATEDBNAME}"
+    exit 1
+fi
+#check that leveldb images exist
+if ! [[ $(docker images | grep 2.4.0-leveldb) ]]; then
+    echo "no fabric-${LEVELDB} images detected. Please assemble fabric with ${LEVELDB} as a state database and make sure that images named with format 2.4.0-${LEVELDB}"
+    exit 1
+fi
 
 # 3. Start a loop for INDEX:
 #   3.1 do for SPECIFIED statedb 
@@ -179,4 +189,3 @@ do
     echo "Stopping fabric network..."
     ./end.sh ${LEVELDB} >> "./$DIRNAME/${BENCH}_${LEVELDB}_output_${START_NETWORK_TIME}.txt"
 done   
-
