@@ -20,7 +20,6 @@ services:
       - 9090:9090
     depends_on:
       - cadvisor
-    network_mode: "host"
 
   grafana:
     image: grafana/grafana
@@ -36,7 +35,6 @@ services:
     env_file:
       - ./grafana/config.monitoring
     restart: always
-    network_mode: "host"
 
   cadvisor:
     #image: google/cadvisor:v0.27.4
@@ -44,11 +42,10 @@ services:
     privileged: true
     container_name: cadvisor
     volumes:
-      - /var/run:/var/run:rw
+      - /var/run/docker.sock:/var/run/docker.sock:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-      - /cgroup:/cgroup:ro
+      #- /cgroup:/cgroup:ro
     ports:
       - 8080:8080
     restart: always
-    network_mode: "host"
