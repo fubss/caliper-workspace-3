@@ -15,6 +15,10 @@ if [[ $# -ge 1 ]] ; then
       export STATEDBNAME=rocksdb
       shift
   fi
+  if [[ "$key" == "boltdb" ]]; then
+      export STATEDBNAME=boltdb
+      shift
+  fi
 fi
 
 set -x
