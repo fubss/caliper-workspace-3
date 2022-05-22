@@ -4,10 +4,10 @@
 #   0 - empty-contract-1of.yaml
 #   1 - get-asset.yaml
 #   2 - create-asset.yaml
-#   3 - delete-asset.yaml
-#   4 - mixed-range-query-pagination.yaml
-#   5 - get-asset-batch.yaml
-#   6 - create-asset-batch.yaml
+#     - delete-asset.yaml //was deleted because there is no method in golang-cheincode
+#   3 - mixed-range-query-pagination.yaml
+#   4 - get-asset-batch.yaml
+#   5 - create-asset-batch.yaml
 #
 # ------------------------------------------------------
 # Algorithm:
@@ -36,7 +36,7 @@
 # Code:
 # ------------------------------------------------------
 
-CALIPER_BENCHMARKS_TO_RUN="empty-contract-1of get-asset create-asset delete-asset mixed-range-query-pagination get-asset-batch create-asset-batch"
+CALIPER_BENCHMARKS_TO_RUN="empty-contract-1of get-asset create-asset mixed-range-query-pagination get-asset-batch create-asset-batch"
 SupportedDBs="rocksdb boltdb (all compares to leveldb)"
 LEVELDB="leveldb"
 
