@@ -3,13 +3,10 @@ if [[ $# -ge 1 ]] ; then
   key="$1"
   if [[ "$key" == "leveldb" ]]; then
       export STATEDBNAME=leveldb
-      export FABRIC_VERSION=2.4.0-goleveldb
       shift
   fi
   if [[ "$key" == "rocksdb" ]]; then
-      export STATEDBNAME="rocksdb"
-      export FABRIC_VERSION="!!!!!!!!!!2.4.0-grocksdb"
-
+      export STATEDBNAME=rocksdb
       shift
   fi
   if [[ "$key" == "boltdb" ]]; then
