@@ -36,7 +36,7 @@
 # Code:
 # ------------------------------------------------------
 
-CALIPER_BENCHMARKS_TO_RUN="empty-contract-1of get-asset create-asset mixed-range-query-pagination get-asset-batch create-asset-batch"
+CALIPER_BENCHMARKS_TO_RUN="create-asset-batch delete-asset" #"empty-contract-1of get-asset create-asset mixed-range-query-pagination get-asset-batch create-asset-batch"
 SupportedDBs="rocksdb boltdb (all compares to leveldb)"
 LEVELDB="leveldb"
 

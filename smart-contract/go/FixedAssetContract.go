@@ -187,6 +187,22 @@ func (s *SmartContract) PaginatedRangeQuery(ctx contractapi.TransactionContextIn
 	}, nil
 }
 
+// DeleteAsset - delete a FixedAsset in the world state
+func (s *SmartContract) DeleteAsset(ctx contractapi.TransactionContextInterface, uuid string) error {
+	//fmt.Println("Entering deleteAsset")
+
+	err := ctx.GetStub().DelState(uuid)
+
+	if err != nil {
+		//fmt.Println("Error performing DelState: " + err.Error())
+		return err
+	}
+
+	//fmt.Println("Exiting deleteAsset")
+
+	return nil
+}
+
 func getAllResults(iterator shim.StateQueryIteratorInterface) (*[]*assets.FixedAsset, error) {
 
 	results := []*assets.FixedAsset{}

@@ -11,24 +11,24 @@ test:
     type: local
     number: 4
   rounds:
-    - label: create-asset-batch-20-8000-fixed-tps
-      description: >-
-        Test a submitTransaction() Gateway method against the NodeJS
-        `fixed-asset` Smart Contract method named `createAssetsFromBatch`, which
-        inserts a batch of 20 assets of size 8k bytes into the World State
-        database at a fixed TPS.
-      chaincodeID: fixed-asset
-      txDuration: 300
-      rateControl:
-        type: fixed-rate
-        opts:
-          tps: 5
-      workload:
-        module: benchmarks/api/fabric/lib/batch-create-asset.js
-        arguments:
-          chaincodeID: fixed-asset
-          byteSize: 8000
-          batchSize: 20
+#   - label: create-asset-batch-20-8000-fixed-tps
+#     description: >-
+#       Test a submitTransaction() Gateway method against the NodeJS
+#       `fixed-asset` Smart Contract method named `createAssetsFromBatch`, which
+#       inserts a batch of 20 assets of size 8k bytes into the World State
+#       database at a fixed TPS.
+#     chaincodeID: fixed-asset
+#     txDuration: 300
+#     rateControl:
+#       type: fixed-rate
+#       opts:
+#         tps: 5
+#     workload:
+#       module: ./workload/batch-create-asset.js
+#       arguments:
+#         chaincodeID: fixed-asset
+#         byteSize: 8000
+#         batchSize: 20
     - label: create-asset-batch-1-8000
       description: >-
         Test a submitTransaction() Gateway method against the NodeJS
@@ -42,7 +42,7 @@ test:
         opts:
           transactionLoad: 5
       workload:
-        module: benchmarks/api/fabric/lib/batch-create-asset.js
+        module: ./workload/batch-create-asset.js
         arguments:
           chaincodeID: fixed-asset
           byteSize: 8000
@@ -60,7 +60,7 @@ test:
         opts:
           transactionLoad: 5
       workload:
-        module: benchmarks/api/fabric/lib/batch-create-asset.js
+        module: ./workload/batch-create-asset.js
         arguments:
           chaincodeID: fixed-asset
           byteSize: 8000
@@ -78,7 +78,7 @@ test:
         opts:
           transactionLoad: 5
       workload:
-        module: benchmarks/api/fabric/lib/batch-create-asset.js
+        module: ./workload/batch-create-asset.js
         arguments:
           chaincodeID: fixed-asset
           byteSize: 8000
@@ -96,7 +96,7 @@ test:
         opts:
           transactionLoad: 5
       workload:
-        module: benchmarks/api/fabric/lib/batch-create-asset.js
+        module: ./workload/batch-create-asset.js
         arguments:
           chaincodeID: fixed-asset
           byteSize: 8000
@@ -114,7 +114,7 @@ test:
         opts:
           transactionLoad: 5
       workload:
-        module: benchmarks/api/fabric/lib/batch-create-asset.js
+        module: ./workload/batch-create-asset.js
         arguments:
           chaincodeID: fixed-asset
           byteSize: 8000
@@ -132,7 +132,7 @@ test:
         opts:
           transactionLoad: 5
       workload:
-        module: benchmarks/api/fabric/lib/batch-create-asset.js
+        module: ./workload/batch-create-asset.js
         arguments:
           chaincodeID: fixed-asset
           byteSize: 8000
