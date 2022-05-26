@@ -4,10 +4,10 @@
 #   0 - empty-contract-1of.yaml
 #   1 - get-asset.yaml
 #   2 - create-asset.yaml
-#     - delete-asset.yaml //was deleted because there is no method in golang-cheincode
-#   3 - mixed-range-query-pagination.yaml
-#   4 - get-asset-batch.yaml
-#   5 - create-asset-batch.yaml
+#   3 - delete-asset.yaml //was deleted because there is no method in golang-cheincode. then was returned to the benchmark list.
+#   4 - mixed-range-query-pagination.yaml
+#   5 - get-asset-batch.yaml
+#   6 - create-asset-batch.yaml
 #
 # ------------------------------------------------------
 # Algorithm:
@@ -36,8 +36,8 @@
 # Code:
 # ------------------------------------------------------
 
-CALIPER_BENCHMARKS_TO_RUN="create-asset-batch delete-asset" #"empty-contract-1of get-asset create-asset mixed-range-query-pagination get-asset-batch create-asset-batch"
-SupportedDBs="rocksdb boltdb (all compares to leveldb)"
+CALIPER_BENCHMARKS_TO_RUN="empty-contract-1of get-asset create-asset create-asset-batch mixed-range-query-pagination get-asset-batch delete-asset"
+SupportedDBs="rocksdb boltdb badgerdb (all compares to leveldb)"
 LEVELDB="leveldb"
 
 ## Parse mode
@@ -57,6 +57,9 @@ if [[ $# -ge 1 ]] ; then
       shift
   elif [[ "$key" == "boltdb" ]]; then
       export STATEDBNAME=boltdb
+      shift
+  elif [[ "$key" == "badgerdb" ]]; then
+      export STATEDBNAME=badgerdb
       shift
   else
     echo "not existing statedbname, use from the list: ${SupportedDBs}"

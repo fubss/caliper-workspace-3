@@ -13,6 +13,10 @@ if [[ $# -ge 1 ]] ; then
       export STATEDBNAME=boltdb
       shift
   fi
+  if [[ "$key" == "badgerdb" ]]; then
+      export STATEDBNAME=badgerdb
+      shift
+  fi
 fi
 
 set -x
