@@ -131,6 +131,6 @@ monitors:
              label: name
              statistic: sum
              multiplier: 0.000001
-       charting:
-         polar:
-         - metrics: [all]
+         charting:
+           polar:
+             metrics: [all]
